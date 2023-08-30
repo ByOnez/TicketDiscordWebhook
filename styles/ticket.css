@@ -84,3 +84,12 @@ button {
 button:hover {
     background-color: var(--cor-laranja);
 }
+
+img {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px; 
+}
