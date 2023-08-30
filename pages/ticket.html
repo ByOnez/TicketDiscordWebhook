@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/ticket.css">
 </head>
+
 <body>
-    <h1>Página Ticket</h1>
+    <div class="content">
+        <h1>Como podemos ajudar?</h1>
+        <div class="form-field">
+            <label for="input-name">Nome <span class="required">* Obrigatório</span></label>
+            <input type="text" placeholder="Digite seu Nome" required>
+        </div>
+        <div class="form-field">
+            <label for="input-email">Email <span class="required">* Obrigatório</span></label>
+            <input type="text" placeholder="Digite seu Email" required>
+        </div>
+        <div class="form-field">
+            <label for="input-title">Título do Ticket</label>
+            <input type="text" placeholder="Digite o título do Ticket">
+        </div>
+        <div class="form-field">
+            <label for="textarea-description">Descrição</label>
+            <textarea name="text" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-field">
+            <button>Enviar</button>
+        </div>
+    </div>
 </body>
+
 </html>
