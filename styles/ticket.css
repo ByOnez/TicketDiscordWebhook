@@ -28,7 +28,7 @@ input {
     border-radius: 25px;
     outline: none;
     cursor: pointer;
-    border-width: 0px;
+    border: none;
     -webkit-box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
     box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
 }
@@ -41,7 +41,6 @@ textarea {
     border-width: 0px;
     outline: none;
     resize: none;
-    overflow: hidden;
     -webkit-box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
     box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
 }
@@ -92,4 +91,14 @@ img {
     position: absolute; 
     bottom: 20px; 
     right: 20px; 
+}
+
+.sucess-transition {
+    border: 2px solid var(--cor-amarelo);
+    transition: border-color 0.5s ease-in-out;
+}
+
+.error-transition {
+    border: 2px solid red;
+    transition: border-color 0.5s ease-in-out;
 }

@@ -7,7 +7,7 @@
 
 body {
     background-color: var(--cor-azul);
-    
+    overflow: hidden;
 }
 
 .content {

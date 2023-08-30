@@ -9,3 +9,17 @@
 body {
     font-family: 'Open Sans', sans-serif;
 }
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #ffb703 #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ffb703;
+    border-radius: 15px;
+}
