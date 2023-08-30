@@ -16,5 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let email = emailInput.value
         let title = titleInput.value
         let description = descriptionTxtarea.value
+
+        nameValidate(nameInput)
+        emailValidate(emailInput)
+        titleValidate(titleInput)
+        descriptionValidate(descriptionTxtarea)
     }
 })
