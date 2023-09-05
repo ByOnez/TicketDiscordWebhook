@@ -34,19 +34,19 @@ button {
     cursor: pointer;
     transition: background-color 0.5s ease;
     margin-bottom: 25px;
-    -webkit-box-shadow: 3px 10px 16px 6px rgba(0,0,0,0.3); 
-    box-shadow: 3px 10px 16px 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 10px 16px 6px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: var(--cor-laranja); 
+    background-color: var(--cor-laranja);
 }
 
 img {
     display: inline-block;
     height: 50px;
     width: 50px;
-    position: absolute; 
-    bottom: 20px; 
-    right: 20px; 
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
