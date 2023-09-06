@@ -1,11 +1,9 @@
-let formData = {}
-
 document.addEventListener("DOMContentLoaded", function () {
     let button = document.getElementById("button-send")
     if (button !== null) {
         button.addEventListener("click", function () {
-            formData = getForm()
-            formInfo(formData)
+            const formData = getForm()
+            sendData(formData)
         })
     } else {
         console.log("Erro")
@@ -23,10 +21,6 @@ function getForm() {
     let titleValue = titleInput.value
     let descriptionValue = descriptionTxtarea.value
 
-    nameValidate(nameInput)
-    emailValidate(emailInput)
-    titleValidate(titleInput)
-
     return {
         name: nameValue,
         email: emailValue,
@@ -35,16 +29,14 @@ function getForm() {
     }
 }
 
-function formInfo(formData) {
-    let name = formData.name
-    let email = formData.email
-    let title = formData.title
-    let description = formData.description
-
-    console.log(name)
-    console.log(email)
-    console.log(title)
-    console.log(description)
+function sendData(formData) {
+    import("./webhook.js")
+    .then(module => {
+        console.log("Módulo carregado com sucesso:", module)
+        const { sendForm } = module
+        sendForm(formData)
+    })
+    .catch(error => {
+        console.error("Erro ao carregar o módulo:", error)
+    })
 }
-
-export { formInfo }
