@@ -1,8 +1,6 @@
-import axios from "axios"
-
-function sendFormData(formData) {
+function sendForm(formData) {
     const { name, email, title, description } = formData
-    const webhookURL = "https://discord.com/api/webhooks/1148771183911780483/LLBNlBhyLgPScraEKDCwGoxMmrwatSspG1X9vTjmT1IjuwGe7B7fJRYxD2FC6nxVkTY0" 
+    const webhookURL = "https://discord.com/api/webhooks/1167218982961545286/Wb779YhNtz1aTcqRy0m65leIYDBL2b5wpSfE1kCew7OaI2UDYIMVPR-Th5R9ZMCRP84-" 
 
     const logMessage = {
         content: `Nome: ${name}\nEmail: ${email}\nTítulo: ${title}\nDescrição: ${description}`,
@@ -18,4 +16,4 @@ function sendFormData(formData) {
         })
 }
 
-export { sendFormData }
+export { sendForm }
