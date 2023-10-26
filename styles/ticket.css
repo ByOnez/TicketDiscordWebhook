@@ -93,7 +93,7 @@ img {
     right: 20px;
 }
 
-.sucess-transition {
+.success-transition {
     border: 2px solid green;
     transition: border-color 0.5s ease-in-out;
 }
