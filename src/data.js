@@ -27,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const title = formData.title;
             const description = formData.description;
 
-            const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-
-            if (emailRegex.test(email) === false || email === "" || name === "" || title === "" || description === "" || description.length > 4000) {
+            if ( email === "" || name === "" || title === "" || description === "" || description.length > 4000) {
                 console.log("errado");
             } else {
                 console.log("Enviando");
