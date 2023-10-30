@@ -50,3 +50,11 @@ img {
     bottom: 20px;
     right: 20px;
 }
+
+@media (max-width: 768px) {
+    h1 {
+        width: 50%;
+        font-size: 25px;
+        text-align: center;
+    }
+}
