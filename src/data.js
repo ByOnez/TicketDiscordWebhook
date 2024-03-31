@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleInput = document.getElementById("input-title");
         const descriptionTxtarea = document.getElementById("textarea-description");
 
-        const nameValue = nameInput.value;
-        const emailValue = emailInput.value;
-        const titleValue = titleInput.value;
-        const descriptionValue = descriptionTxtarea.value;
+        let nameValue = nameInput.value;
+        let emailValue = emailInput.value;
+        let titleValue = titleInput.value;
+        let descriptionValue = descriptionTxtarea.value;
 
         return {
             name: nameValue,
