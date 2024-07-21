@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { FormValues } from "../types/Ticket";
+import { sendToDiscord } from '../services/sendToDiscord';
+import Confirmation from './Confirmation';
 
-interface TicketProps {
-    onSubmit: (formValues: FormValues) => void;
-}
-
-export default function Ticket({ onSubmit }: TicketProps) {
+export default function Ticket() {
     const [formValues, setFormValues] = useState<FormValues>({
         name: "",
         email: "",
         title: "",
         description: "",
     });
+
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { id, value } = e.target;
@@ -21,13 +21,18 @@ export default function Ticket({ onSubmit }: TicketProps) {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const isFormComplete = Object.values(formValues).every(value => value.trim() !== "");
         if (isFormComplete) {
-            onSubmit(formValues);
+            try {
+                await sendToDiscord(formValues);
+                setIsSubmitted(true);
+            } catch (error) {
+                console.error("Erro ao enviar dados:", error);
+            }
         } else {
-            console.log("Por favor, preencha todos os campos.");
+            console.log("Preencha todos os campos.");
         }
     };
 
@@ -58,6 +63,10 @@ export default function Ticket({ onSubmit }: TicketProps) {
         },
     ];
 
+    if (isSubmitted) {
+        return <Confirmation />;
+    }
+
     return (
         <div className="bg-ticket-azure w-full h-screen flex justify-center items-center">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
@@ -66,7 +75,7 @@ export default function Ticket({ onSubmit }: TicketProps) {
                     {formInputs.map((input) => (
                         input.type !== "textarea" ? (
                             <label key={input.id} htmlFor={input.id}>
-                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 rounded border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
+                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
                                 <input
                                     type={input.type}
                                     id={input.id}
@@ -78,7 +87,7 @@ export default function Ticket({ onSubmit }: TicketProps) {
                             </label>
                         ) : (
                             <label key={input.id} htmlFor={input.id}>
-                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 rounded border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
+                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
                                 <textarea
                                     id={input.id}
                                     className="w-full p-2 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-ticket-amber font-medium resize-none"

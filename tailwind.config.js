@@ -6,6 +6,20 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        scaleUp: {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        scaleUp: 'scaleUp 0.5s ease-out',
+        fadeIn: 'fadeIn 1s ease-in-out',
+      },
       colors: {
         "ticket": {
           "azure": "#2563EB",
