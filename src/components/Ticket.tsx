@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { FormValues } from "../types/Ticket";
-import { sendToDiscord } from '../services/sendToDiscord';
-import Confirmation from './Confirmation';
+import { sendToDiscord } from "../services/sendToDiscord";
+import Confirmation from "./Confirmation";
+import Input from "./ui/Input";
 
 export default function Ticket() {
     const [formValues, setFormValues] = useState<FormValues>({
@@ -40,26 +41,22 @@ export default function Ticket() {
         {
             id: "name",
             label: "Nome",
-            placeholder: "Digite seu nome",
-            type: "text",
+            type: "text" as const,
         },
         {
             id: "email",
             label: "Email",
-            placeholder: "Digite seu email",
-            type: "email",
+            type: "email" as const,
         },
         {
             id: "title",
             label: "Título do Ticket",
-            placeholder: "Digite o título do ticket",
-            type: "text",
+            type: "text" as const,
         },
         {
             id: "description",
             label: "Descrição",
-            placeholder: "Descreva o seu problema",
-            type: "textarea",
+            type: "textarea" as const,
         },
     ];
 
@@ -73,31 +70,14 @@ export default function Ticket() {
                 <h1 className="text-ticket-text font-bold text-4xl text-center mb-6">Formulário de Suporte</h1>
                 <form className="flex flex-col space-y-4 mt-6" onSubmit={handleSubmit}>
                     {formInputs.map((input) => (
-                        input.type !== "textarea" ? (
-                            <label key={input.id} htmlFor={input.id}>
-                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
-                                <input
-                                    type={input.type}
-                                    id={input.id}
-                                    className="w-full p-2 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-ticket-amber font-medium"
-                                    placeholder={input.placeholder}
-                                    value={formValues[input.id as keyof FormValues]}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                        ) : (
-                            <label key={input.id} htmlFor={input.id}>
-                                <p className="text-ticket-text text-left pl-2 text-lg border-l-2 border-ticket-amber mb-2 ml-2 font-medium">{input.label}</p>
-                                <textarea
-                                    id={input.id}
-                                    className="w-full p-2 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-ticket-amber font-medium resize-none"
-                                    rows={4}
-                                    placeholder={input.placeholder}
-                                    value={formValues[input.id as keyof FormValues]}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                        )
+                        <Input
+                            key={input.id}
+                            id={input.id}
+                            type={input.type}
+                            label={input.label}
+                            value={formValues[input.id as keyof FormValues]}
+                            onChange={handleChange}
+                        />
                     ))}
                     <button type="submit" className="bg-ticket-amber text-white text-sm font-medium px-6 py-4 rounded mt-4 shadow-sm mx-auto">
                         Enviar Ticket
