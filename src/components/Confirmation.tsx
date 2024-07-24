@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Confirmation: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/');
+      navigate("/");
     }, 3000);
 
     return () => clearTimeout(timer);
